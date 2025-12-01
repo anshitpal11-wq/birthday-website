@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Surprise</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: #20cccc;
+      overflow: hidden;
+    }
+    .page {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      text-align: center;
+      padding: 20px;
+    }
+    .page.active {
+      display: flex;
+    }
+    img {
+      max-width: 80%;
+      height: auto;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .quote {
+      font-size: 1.5em;
+      color: #000000;
+      margin: 20px;
+    }
+    .cake {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .balloons {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: rise 3s forwards;
+    }
+    @keyframes rise {
+      to {
+        top: -20%;
+      }
+    }
+    .sparkle {
+      animation: sparkle 1s infinite;
+    }
+    @keyframes sparkle {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 20px;
+      background: #39baed;
+      color: rgb(0, 0, 0);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <audio id="bg-music" autoplay loop>
+    <source src="birthday_song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="page active" id="page1">
+    <img src="c:\Users\user\AppData\Local\Packages\Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy\TempState\WhatsApp Image 2025-11-29 at 14.23.20_2560c01b_edited.jpg" alt="Friend Photo" />
+    <button onclick="nextPage()">Tap to begin your surprise 🎁</button>
+  </div>
+
+  <div class="page" id="page2">
+    <div class="quote">wishing u a happy birthday with lots of smile and joyfull moments, happy 18teen! chal aab cake cut kar! 🥳</div>
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="page" id="page3">
+    <img id="cake" src="c:\Users\user\Downloads\ChatGPT Image Nov 28, 2025, 11_18_41 PM.png" class="cake" onclick="blowCandle()" alt="Cake" />
+    <div id="tapMsg">Tap the candle to blow!</div>
+  </div>
+
+  <div class="page" id="page4">
+    <img src="c:\Users\user\AppData\Local\Packages\Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy\TempState\WhatsApp Image 2025-11-28 at 20.57.40_d502a793_edited.jpg" alt="Friend Again" />
+    <img class="balloons" src="c:\Users\user\AppData\Local\Packages\Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy\TempState\ChatGPT Image Nov 29, 2025, 02_02_52 PM_edited.png" alt="Balloons" />
+    <button onclick="nextPage()">Next</button>
+  </div>
+
+  <div class="page" id="page5">
+    <div class="quote sparkle">A small family a my comfort to say anything wala dost, those 10th class day still the memories hits remembering those were the days we used to live💖</div>
+    <img src="c:\Users\user\AppData\Local\Packages\Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy\TempState\WhatsApp Image 2025-11-28 at 21.01.38_fc8dcc70_edited.jpg" alt="Sparkle Photo" />
+    <button onclick="nextPage()">Final</button>
+  </div>
+  <div class="page" id="page6">
+    <div class="quote">Happy Birthday,Dr.kabutar! 🎉</div>
+    <img src="c:\Users\user\AppData\Local\Packages\Microsoft.Windows.ShellExperienceHost_cw5n1h2txyewy\TempState\WhatsApp Image 2025-11-28 at 19.52.57_7eae312c_edited.jpg" alt="Final Pic" />
+    <div class="quote">May you deserve everything in your life what ever you want, and haaann dont worry u gonna be a great docter one day :)💫</div>
+    <button onclick="restart()">Replay Surprise</button>
+  </div>
+
+  <script>
+    let current = 1;
+    let candleBlown = false;
+
+    function nextPage() {
+      document.getElementById(`page${current}`).classList.remove('active');
+      current++;
+      document.getElementById(`page${current}`).classList.add('active');
+    }
+
+    function blowCandle() {
+      const cake = document.getElementById('cake');
+      const msg = document.getElementById('tapMsg');
+
+      if (!candleBlown) {
+        cake.src =  "c:\\Users\\user\\Downloads\\ChatGPT Image Nov 28, 2025, 11_31_06 PM.png"
+        msg.textContent = 'Tap again to cut the cake! 🎂';
+        candleBlown = true;
+      } else {
+        cake.style.transform = 'scale(0.8)';
+        msg.textContent = 'Yay! Cake cut 🎉';
+        setTimeout(nextPage, 1500);
+      }
+    }
+
+    function restart() {
+      document.getElementById(`page${current}`).classList.remove('active');
+      current = 1;
+      candleBlown = false;
+      document.getElementById(`cake`).src = 'cake_with_candle.png';
+      document.getElementById(`cake`).style.transform = 'scale(1)';
+      document.getElementById(`tapMsg`).textContent = 'Tap the candle to blow!';
+      document.getElementById(`page${current}`).classList.add('active');
+    }
+  </script>
+</body>
+</html> 
