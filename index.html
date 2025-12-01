@@ -81,30 +81,30 @@
 
   <!-- PAGE 3 (Cake) -->
   <div class="page" id="page3">
-    <img id="cake" src="cake1.jpg" class="cake" onclick="blowCandle()" alt="Cake" />
+    <img id="cake" src="cake1.png" class="cake" onclick="blowCandle()" alt="Cake" />
     <div id="tapMsg">Tap the candle to blow!</div>
   </div>
 
   <!-- PAGE 4 -->
   <div class="page" id="page4">
     <img src="PHOTO2.jpg" alt="Photo 2" />
-    <img class="balloons" src="PHOTO3.jpg" alt="Balloons" />
+    <img class="balloons" src="balloon.jpg" alt="Balloons" />
     <button onclick="nextPage()">Next</button>
   </div>
 
   <!-- PAGE 5 -->
   <div class="page" id="page5">
     <div class="quote sparkle">
-      A small family & a comfort friend to say anything. Memories of 10th still hit hard 💖
+      A small family & a my comfort friend to say anything. the 10th class memories still hit hard 💖
     </div>
-    <img src="PHOTO4.jpg" alt="Photo 4" />
+    <img src="PHOTO3.jpg" alt="Photo 4" />
     <button onclick="nextPage()">Final</button>
   </div>
 
   <!-- PAGE 6 -->
   <div class="page" id="page6">
     <div class="quote">Happy Birthday! 🎉</div>
-    <img src="PHOTO2.jpg" alt="Final Pic" />
+    <img src="PHOTO4.jpg" alt="Final Pic" />
     <div class="quote">
       You deserve everything in your life! And yes, you’ll be a great doctor someday 💫
     </div>
@@ -126,7 +126,7 @@
       const msg = document.getElementById('tapMsg');
 
       if (!candleBlown) {
-        cake.src = "cake2.jpg";  // ← second cake image
+        cake.src = "cake2.png";  // ← second cake image
         msg.textContent = "Tap again to cut the cake! 🎂";
         candleBlown = true;
       } else {
